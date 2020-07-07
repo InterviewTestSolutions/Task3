@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader", "FileReader\FileReader.csproj", "{CF27E60C-AA70-4DCE-A0DD-59E47F69C276}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader.WinForms", "FileReader.WinForms\FileReader.WinForms.csproj", "{A0B9B516-F2BF-4233-A6DC-9ED29F339092}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF27E60C-AA70-4DCE-A0DD-59E47F69C276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF27E60C-AA70-4DCE-A0DD-59E47F69C276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF27E60C-AA70-4DCE-A0DD-59E47F69C276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF27E60C-AA70-4DCE-A0DD-59E47F69C276}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B9B516-F2BF-4233-A6DC-9ED29F339092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B9B516-F2BF-4233-A6DC-9ED29F339092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B9B516-F2BF-4233-A6DC-9ED29F339092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B9B516-F2BF-4233-A6DC-9ED29F339092}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28237E05-5DA5-4D1D-9BD2-1539F7F36147}
+	EndGlobalSection
+EndGlobal
