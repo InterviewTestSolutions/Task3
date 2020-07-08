@@ -11,6 +11,7 @@ namespace FileReader
     public sealed class FileReaderBuilder
     {
         private readonly string[] decryptionAvailableForFileExtensions = { SupportedExtensions.Text, SupportedExtensions.Xml, SupportedExtensions.Json };
+        private readonly string[] roleCheckerAvailableForFileExtensions = { SupportedExtensions.Text, SupportedExtensions.Xml, SupportedExtensions.Json };
 
         private string filePath;
         private IContentsDecryptor decryptor = null;
@@ -49,7 +50,7 @@ namespace FileReader
 
             if (roleChecker != null)
             {
-                if (extension == SupportedExtensions.Text || extension == SupportedExtensions.Xml)
+                if (roleCheckerAvailableForFileExtensions.Contains(extension))
                 {
                     roleChecker.VerifyPermissions(filePath);
                 }
