@@ -34,6 +34,7 @@
             this.fileContentsTextBox = new System.Windows.Forms.TextBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.decryptFileCheckBox = new System.Windows.Forms.CheckBox();
             this.browseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -71,17 +72,17 @@
             this.fileContentsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileContentsTextBox.Location = new System.Drawing.Point(12, 70);
+            this.fileContentsTextBox.Location = new System.Drawing.Point(12, 88);
             this.fileContentsTextBox.Multiline = true;
             this.fileContentsTextBox.Name = "fileContentsTextBox";
             this.fileContentsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.fileContentsTextBox.Size = new System.Drawing.Size(605, 253);
+            this.fileContentsTextBox.Size = new System.Drawing.Size(605, 235);
             this.fileContentsTextBox.TabIndex = 6;
             // 
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(542, 41);
+            this.clearButton.Location = new System.Drawing.Point(542, 59);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 7;
@@ -92,11 +93,21 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 52);
+            this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Contents:";
+            // 
+            // decryptFileCheckBox
+            // 
+            this.decryptFileCheckBox.AutoSize = true;
+            this.decryptFileCheckBox.Location = new System.Drawing.Point(73, 41);
+            this.decryptFileCheckBox.Name = "decryptFileCheckBox";
+            this.decryptFileCheckBox.Size = new System.Drawing.Size(86, 19);
+            this.decryptFileCheckBox.TabIndex = 2;
+            this.decryptFileCheckBox.Text = "Decrypt file";
+            this.decryptFileCheckBox.UseVisualStyleBackColor = true;
             // 
             // browseButton
             // 
@@ -115,6 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 335);
             this.Controls.Add(this.browseButton);
+            this.Controls.Add(this.decryptFileCheckBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.fileContentsTextBox);
@@ -138,6 +150,7 @@
         private System.Windows.Forms.TextBox fileContentsTextBox;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox decryptFileCheckBox;
         private System.Windows.Forms.Button browseButton;
     }
 }
