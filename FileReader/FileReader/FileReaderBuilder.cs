@@ -11,6 +11,7 @@ namespace FileReader
     {
         private string filePath;
         private IContentsDecryptor decryptor = null;
+        private IRoleChecker roleChecker = null;
 
         private FileReaderBuilder()
         {
@@ -29,6 +30,12 @@ namespace FileReader
             return this;
         }
 
+        public FileReaderBuilder UseRoleChecker(IRoleChecker roleChecker)
+        {
+            this.roleChecker = roleChecker;
+            return this;
+        }
+
         public string ReadFile()
         {
             if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
@@ -36,6 +43,18 @@ namespace FileReader
 
             string extension = Path.GetExtension(filePath);
             extension = extension.ToLowerInvariant();
+
+            if (roleChecker != null)
+            {
+                if (extension == SupportedExtensions.Xml)
+                {
+                    roleChecker.VerifyPermissions(filePath);
+                }
+                else
+                {
+                    throw new ArgumentException("Checking permissions for non-Xml files is not poosible.");
+                }
+            }
 
             var fileReader = GetFileReader(filePath, extension);
             string contents = fileReader.ReadFile();
@@ -48,7 +67,7 @@ namespace FileReader
                 }
                 else
                 {
-                    throw new ArgumentException("Decrypting non-Text file is not poosible.");
+                    throw new ArgumentException("Decrypting non-Text files is not poosible.");
                 }
             }
 
