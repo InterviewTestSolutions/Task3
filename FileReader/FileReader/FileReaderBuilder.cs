@@ -80,6 +80,7 @@ namespace FileReader
             {
                 case SupportedExtensions.Text: return new TextFileReader(filePath);
                 case SupportedExtensions.Xml: return new XmlFileReader(filePath);
+                case SupportedExtensions.Json: return new JsonFileReader(filePath);
                 default: throw new ArgumentException("File extension not supported.", nameof(filePath));
             }
         }
