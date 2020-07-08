@@ -24,30 +24,26 @@ namespace FileReader
 
         public string ReadFile()
         {
-            if (string.IsNullOrEmpty(filePath))
-            {
-                throw new ArgumentNullException(nameof(filePath));
-            }
+            if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
+            if (!Path.HasExtension(filePath)) throw new ArgumentException("File extension is missing.", nameof(filePath));
 
-            if (!Path.HasExtension(filePath))
-            {
-                throw new ArgumentException("File extension is missing.", nameof(filePath));
-            }
+            var fileReader = GetFileReader(filePath);
+            string contents = fileReader.ReadFile();
 
+            return contents;
+        }
+
+        private IFileReader GetFileReader(string filePath)
+        {
             string extension = Path.GetExtension(filePath);
             extension = extension.ToLowerInvariant();
 
-            IFileReader fileReader;
             switch (extension)
             {
-                case SupportedExtensions.Text:
-                    fileReader = new TextFileReader(filePath);
-                    break;
+                case SupportedExtensions.Text: return new TextFileReader(filePath);
+                case SupportedExtensions.Xml: return new XmlFileReader(filePath);
                 default: throw new ArgumentException("File extension not supported.", nameof(filePath));
             }
-
-            string contents = fileReader.ReadFile();
-            return contents;
         }
     }
 }

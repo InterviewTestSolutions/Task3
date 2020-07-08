@@ -7,5 +7,6 @@ namespace FileReader.Constants
     public static class SupportedExtensions
     {
         public const string Text = ".txt";
+        public const string Xml = ".xml";
     }
 }
