@@ -26,6 +26,11 @@ namespace FileReader.WinForms
         {
             var fileReaderBuilder = FileReaderBuilder.UseFilePath(filePathTextBox.Text);
 
+            if (decryptFileCheckBox.Checked)
+            {
+                fileReaderBuilder.UseDecryptor(new ReverseContentsDecryptor());
+            }
+
             try
             {
                 fileContentsTextBox.Text = fileReaderBuilder.ReadFile();

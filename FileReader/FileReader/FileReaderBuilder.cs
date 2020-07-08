@@ -10,6 +10,7 @@ namespace FileReader
     public sealed class FileReaderBuilder
     {
         private string filePath;
+        private IContentsDecryptor decryptor = null;
 
         private FileReaderBuilder()
         {
@@ -22,22 +23,40 @@ namespace FileReader
             return fileReaderBuilder;
         }
 
+        public FileReaderBuilder UseDecryptor(IContentsDecryptor decryptor)
+        {
+            this.decryptor = decryptor;
+            return this;
+        }
+
         public string ReadFile()
         {
             if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
             if (!Path.HasExtension(filePath)) throw new ArgumentException("File extension is missing.", nameof(filePath));
 
-            var fileReader = GetFileReader(filePath);
+            string extension = Path.GetExtension(filePath);
+            extension = extension.ToLowerInvariant();
+
+            var fileReader = GetFileReader(filePath, extension);
             string contents = fileReader.ReadFile();
+
+            if (decryptor != null)
+            {
+                if (extension == SupportedExtensions.Text)
+                {
+                    contents = decryptor.Decrypt(contents);
+                }
+                else
+                {
+                    throw new ArgumentException("Decrypting non-Text file is not poosible.");
+                }
+            }
 
             return contents;
         }
 
-        private IFileReader GetFileReader(string filePath)
+        private IFileReader GetFileReader(string filePath, string extension)
         {
-            string extension = Path.GetExtension(filePath);
-            extension = extension.ToLowerInvariant();
-
             switch (extension)
             {
                 case SupportedExtensions.Text: return new TextFileReader(filePath);
