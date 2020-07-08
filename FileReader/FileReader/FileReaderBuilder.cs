@@ -61,13 +61,13 @@ namespace FileReader
 
             if (decryptor != null)
             {
-                if (extension == SupportedExtensions.Text)
+                if (extension == SupportedExtensions.Text || extension == SupportedExtensions.Xml)
                 {
                     contents = decryptor.Decrypt(contents);
                 }
                 else
                 {
-                    throw new ArgumentException("Decrypting non-Text files is not poosible.");
+                    throw new ArgumentException("Decrypting is not poosible for the selected file extension.");
                 }
             }
 
