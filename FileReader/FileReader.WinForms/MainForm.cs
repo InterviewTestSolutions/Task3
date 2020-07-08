@@ -20,6 +20,11 @@ namespace FileReader.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            userRoleComboBox.Items.Add(UserRoles.Admin);
+            userRoleComboBox.Items.Add(UserRoles.User);
+            userRoleComboBox.SelectedIndex = 1;
+
+            UpdateUserRoleVisibility();
         }
 
         private void ReadFileButton_Click(object sender, EventArgs e)
@@ -29,6 +34,11 @@ namespace FileReader.WinForms
             if (decryptFileCheckBox.Checked)
             {
                 fileReaderBuilder.UseDecryptor(new ReverseContentsDecryptor());
+            }
+
+            if (checkRoleCheckBox.Checked)
+            {
+                fileReaderBuilder.UseRoleChecker(new BasicRoleChecker(userRoleComboBox.Text));
             }
 
             try
@@ -54,6 +64,11 @@ namespace FileReader.WinForms
             fileContentsTextBox.Text = string.Empty;
         }
 
+        private void CheckRoleCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateUserRoleVisibility();
+        }
+
         private void BrowseButton_Click(object sender, EventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
@@ -63,6 +78,12 @@ namespace FileReader.WinForms
             {
                 filePathTextBox.Text = openFileDialog.FileName;
             }
+        }
+
+        private void UpdateUserRoleVisibility()
+        {
+            userRoleComboBox.Visible = checkRoleCheckBox.Checked;
+            label3.Visible = checkRoleCheckBox.Checked;
         }
 
         private void ShowErrorMessage(string message)
