@@ -3,12 +3,15 @@ using FileReader.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace FileReader
 {
     public sealed class FileReaderBuilder
     {
+        private readonly string[] decryptionAvailableForFileExtensions = { SupportedExtensions.Text, SupportedExtensions.Xml, SupportedExtensions.Json };
+
         private string filePath;
         private IContentsDecryptor decryptor = null;
         private IRoleChecker roleChecker = null;
@@ -61,7 +64,7 @@ namespace FileReader
 
             if (decryptor != null)
             {
-                if (extension == SupportedExtensions.Text || extension == SupportedExtensions.Xml)
+                if (decryptionAvailableForFileExtensions.Contains(extension))
                 {
                     contents = decryptor.Decrypt(contents);
                 }
