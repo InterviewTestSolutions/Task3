@@ -46,13 +46,13 @@ namespace FileReader
 
             if (roleChecker != null)
             {
-                if (extension == SupportedExtensions.Xml)
+                if (extension == SupportedExtensions.Text || extension == SupportedExtensions.Xml)
                 {
                     roleChecker.VerifyPermissions(filePath);
                 }
                 else
                 {
-                    throw new ArgumentException("Checking permissions for non-Xml files is not poosible.");
+                    throw new ArgumentException("Checking permissions is not poosible for the selected file extension.");
                 }
             }
 
