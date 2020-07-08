@@ -8,5 +8,6 @@ namespace FileReader.Constants
     {
         public const string Text = ".txt";
         public const string Xml = ".xml";
+        public const string Json = ".json";
     }
 }
